@@ -1,0 +1,45 @@
+body {
+    color: #333;
+    background: #fafafa;
+    font-family: "Patua One", sans-serif;
+}
+.donor-form {
+    padding: 50px;
+    margin: 30px 0;
+}
+.donor-form h1 {
+    color: #19bc9d;
+    font-weight: bold;
+    margin: 0 0 15px;
+}
+.donor-form .form-control, .donor-form .btn {
+    min-height: 38px;
+    border-radius: 2px;
+}
+.donor-form .form-control:focus {
+    border-color: #19bc9d;
+}
+.donor-form .btn-primary, .donor-form .btn-primary:active {
+    color: #fff;
+    min-width: 150px;
+    font-size: 16px;
+    background: #19bc9d !important;
+    border: none;
+}
+.donor-form .btn-primary:hover {
+    background: #15a487 !important; 
+}
+.donor-form .btn i {
+    margin-right: 5px;
+}
+.donor-form label {
+    opacity: 0.7;
+}
+.donor-form textarea {
+    resize: vertical;
+}
+.hint-text {
+    font-size: 15px;
+    padding-bottom: 20px;
+    opacity: 0.6;
+}
