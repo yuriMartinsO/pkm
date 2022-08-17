@@ -17,4 +17,4 @@ Route::get('/', function () {
     return view('createDonor');
 });
 
-// Route::post('/', 'DonorController::insert');
+Route::post('/', 'App\Http\Controllers\DonorController@create');

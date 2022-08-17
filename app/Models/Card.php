@@ -11,4 +11,10 @@ use Illuminate\Database\Eloquent\Model;
 class Card extends Model
 {
     use HasFactory;
+    use GetTableColumnsTrait;
+
+    /**
+     * Dados protegidos por requisição
+     */
+    protected $guarded = array();
 }
