@@ -4,7 +4,7 @@
 Prezado Candidato, 
 Abaixo seguem as instruções, bem como o formato para envio do seu  trabalho. 
 
-1. Projeto Cadastro para Doadores. (Não será necessário um CRUD, apenas  a inserção do cadastro). 
+1. Projeto Cadastro para Doadores. (Não será necessário um CRUD, apenas  a inserção do cadastro). <br>
 a. Informações necessárias para o cadastro: <br>
 • Nome; <br>
 • Email; <br>
@@ -16,7 +16,7 @@ a. Informações necessárias para o cadastro: <br>
 • Forma de Pagamento (Débito e Crédito); <br>
 - Se for Débito, gravar as informações da conta; <br> 
 - Se for Crédito, gravar a bandeira do cartão, 6 primeiros números, e  4 últimos números. <br>
-• Endereço. <br>
+• Endereço. <br><br>
 b. Validação do Cadastro (Obrigatório)  <br>
 • Ao inserir o cartão de crédito será necessário verificar se já não tem um  cartão na base de dados com os mesmos 6 primeiros números e 4 últimos, caso exista, informa a seguinte mensagem para o usuário: “Não  foi possível cadastrar esse número de cartão, entre em contato com o  seu supervisor”. <br>
 
