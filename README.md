@@ -7,6 +7,8 @@ obs: necessário ter instalado laravel 8 e composer 2
 - php artisan migrate <br>
 - acessar no navegador: http://localhost:8000/ <br>
 
+obs: no arquivo "teste_de_logica.php" se encontra o exercício 2 de lógica
+
 ---
 
 # PMK
