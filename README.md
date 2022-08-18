@@ -46,5 +46,4 @@ Critérios técnicos para desenvolvimento do projeto: <br>
 Obs: Publicar o projeto em um repositório GIT e nos enviar o  endereço. Entregar o que for possível fazer dentro do prazo. <br>
 Boa sorte!<br>
 
-![image](https://user-images.githubusercontent.com/58126824/185301701-01c6c911-cfbe-4b36-b51a-0d3a4f23337e.png)
-
+![image](https://user-images.githubusercontent.com/58126824/185301798-e49af699-917e-407d-bbf4-1c4fcf444377.png)
