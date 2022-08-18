@@ -45,3 +45,6 @@ Critérios técnicos para desenvolvimento do projeto: <br>
 - Desejável (não obrigatório) uso de javascript. <br>
 Obs: Publicar o projeto em um repositório GIT e nos enviar o  endereço. Entregar o que for possível fazer dentro do prazo. <br>
 Boa sorte!<br>
+
+![image](https://user-images.githubusercontent.com/58126824/185301701-01c6c911-cfbe-4b36-b51a-0d3a4f23337e.png)
+
