@@ -24,7 +24,7 @@ class DonorController extends Controller
         $address->street = $request->input('street');
         $address->number = $request->input('number');
         $address->neighborhood = $request->input('neighborhood');
-        $address->postalcode = $request->input('postalcode');
+        $address->postalcode = preg_replace('/\D/', '', $request->input('postalcode'));
 
         $message = 'Erro ao cadastrar endereço';
         try {
@@ -102,7 +102,7 @@ class DonorController extends Controller
         $donor->phone = $request->input('phone');
         $donor->born_at = $request->input('born_at');
         $donor->donationInterval = $request->input('donationInterval');
-        $donor->donationValue = $request->input('donationValue');
+        $donor->donationValue = floatval(preg_replace('/[^\d\.]/', '', $request->input('donationValue')));
         $donor->address_id = $address->id;
         $donor->card_id = $card->id;
 

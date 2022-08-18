@@ -55,13 +55,13 @@
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label for="inputCpf">CPF</label>
-                                        <input type="text" name="cpf" class="form-control" id="inputCpf" required>
+                                        <input type="text" name="cpf" class="cpf form-control" id="inputCpf" required>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label for="inputPhone">Telefone</label>
-                                        <input type="text" name="phone" class="form-control" id="inputPhone" required>
+                                        <input type="text" name="phone" class="phone form-control" id="inputPhone" required>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
@@ -81,7 +81,7 @@
                                 <div class="col-sm-4">
                                 <div class="form-group">
                                         <label for="inputDonationValue">Valor da doação</label>
-                                        <input type="number" name="donationValue" class="form-control" id="inputDonationValue" required>
+                                        <input type="text" name="donationValue" class="money form-control" id="inputDonationValue" required>
                                     </div>
                                 </div>
                             </div>
@@ -90,7 +90,7 @@
                                 <div class="col-sm-2">
                                     <div class="form-group">
                                         <label for="inputPostalCode">CEP</label>
-                                        <input type="text" name="postalcode" class="form-control" id="inputPostalCode" required>
+                                        <input type="text" name="postalcode" class="cep form-control" id="inputPostalCode" required>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
