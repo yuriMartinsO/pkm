@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('cards', function (Blueprint $table) {
             $table->id();
+            $table->string('cardType')->nullable();
             $table->string('cardNumber');
-            $table->string('cardFlag');
+            $table->string('cardFlag')->nullable();
             $table->timestamps();
         });
     }

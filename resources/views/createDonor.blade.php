@@ -2,21 +2,38 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     @include('head')
     <body>
-        <div class="container-lg">
+        <div class="container-lg">            
             <div class="row">
                 <div class="col-md-10 mx-auto">
-                    @if(session()->has('error'))
-                        <div class="alert alert-danger">
-                            {{ session()->get('error') }}
-                        </div>
-                    @elseif(session()->has('success'))
-                        <div class="alert alert-success">
-                            {{ session()->get('success') }}
+                    @if ($errors->any())
+                        <div class="inner-content">
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
                         </div>
                     @endif
                 </div>
                 <div class="col-md-10 mx-auto">
-                    <div class="donor-form">
+                    @if(session()->has('error'))
+                        <div class="inner-content">
+                            <div class="alert alert-danger">
+                                {{ session()->get('error') }}
+                            </div>
+                        </div>
+                    @elseif(session()->has('success'))
+                        <div class="inner-content">
+                            <div class="alert alert-success">
+                                {{ session()->get('success') }}
+                            </div>
+                        </div>
+                    @endif
+                </div>
+                <div class="col-md-10 mx-auto">
+                    <div class="donor-form inner-content">
                         <h1>Cadastro de Doador</h1>
                         <p class="hint-text">Cadastre seu doador aqui:</p>
                         <form action="" method="post">
@@ -57,7 +74,7 @@
                                     <div class="form-group">
                                         <label for="exampleFormControlSelect1">Intervalo de doação</label>
                                         <select class="form-control" name="donationInterval" id="exampleFormControlSelect1">
-                                        {{ App\Http\Controllers\DonorController::showDonationIntervalOptions(); }}
+                                        @include('showDonationIntervalOptions')
                                         </select>
                                     </div>
                                 </div>
@@ -101,6 +118,20 @@
                             </div>
                             <div><h2>Cartão</h2></div>
                             <div class="row">
+                                <div class="col-sm-2 mt-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="card_type" id="card_type1" value="credito" checked>
+                                        <label class="form-check-label" for="card_type1">
+                                            Crédito
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="card_type" id="card_type2" value="debito">
+                                        <label class="form-check-label" for="card_type2">
+                                            Débito
+                                        </label>
+                                    </div>
+                                </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="inputCardNumber">Número do cartão</label>
@@ -123,7 +154,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary"><i class="fa fa-paper-plane"></i>Cadastrar</button>
+                            <button type="submit" class="btn btn-primary mt-5"><i class="fa fa-paper-plane"></i>Cadastrar</button>
                         </form>
                     </div>
                 </div>

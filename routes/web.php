@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DonorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,4 +18,4 @@ Route::get('/', function () {
     return view('createDonor');
 });
 
-Route::post('/', 'App\Http\Controllers\DonorController@create');
+Route::post('/', [DonorController::class, 'create']);

@@ -11,10 +11,14 @@ use Illuminate\Database\Eloquent\Model;
 class Address extends Model
 {
     use HasFactory;
-    use GetTableColumnsTrait;
 
     /**
-     * Dados protegidos por requisição
+     * Data allowed of filling
      */
-    protected $guarded = array();
+    protected $fillable = [
+        'street',
+        'number',
+        'neighborhood',
+        'postalcode'
+    ];
 }

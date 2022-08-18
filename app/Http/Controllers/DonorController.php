@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Address;
 use App\Models\Card;
-use Illuminate\Http\Request;
 use App\Models\Donor;
-use Illuminate\Support\Collection;
+use App\Http\Requests\DonorPostRequest;
 
 /**
  * Controller class for doner
@@ -14,58 +13,107 @@ use Illuminate\Support\Collection;
 class DonorController extends Controller
 {
     /**
-     * Show the donation interval options
+     * Create a new address
+     *
+     * @param  \App\Http\Requests\DonorPostRequest $request
+     * @return Address|RedirectResponse
      */
-    public static function showDonationIntervalOptions()
+    private function createAddress(DonorPostRequest $request)
     {
-        $options = Donor::DONATION_INTERVALS;
-        $html = '';
+        $address = new Address();
+        $address->street = $request->input('street');
+        $address->number = $request->input('number');
+        $address->neighborhood = $request->input('neighborhood');
+        $address->postalcode = $request->input('postalcode');
 
-        foreach ($options as $key => $optionName) {
-            $html .= "<option value={$key}>{$optionName}</option>";
+        $message = 'Erro ao cadastrar endereço';
+        try {
+            $saved = $address->save();
+        } catch (\Exception $e) {
+            return back()->with('error', $message);
         }
 
-        echo $html;
+        if (!$saved) {
+            return back()->with('error', $message);
+        }
+
+        return $address;
+    }
+
+    /**
+     * Create a new card
+     *
+     * @param  \App\Http\Requests\DonorPostRequest $request
+     * @return Card|RedirectResponse
+     */
+    private function createCard(DonorPostRequest $request)
+    {
+        $card = new Card();
+
+        $cardNumber = Card::maskCardNumber($request->input('cardNumber'));
+        $card->cardNumber = $cardNumber;
+
+        $card->cardType = $request->input('card_type');
+
+        if ($card->cardType == Card::CREDIT) {
+            $card->cardFlag = $request->input('cardFlag');
+        }
+
+        $message = 'Erro ao cadastrar cartão';
+        try {
+            $saved = $card->save();
+        } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
+
+        if (!$saved) {
+            return back()->with('error', $message);
+        }
+
+        return $card;
     }
 
     /**
      * Create a new donor
      *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @param  \App\Http\Requests\DonorPostRequest $request
+     * @return \App\Http\Requests\Response
      */
-    public function create(Request $request)
+    public function create(DonorPostRequest $request)
     {
-        $requestFieldsCollection = new Collection($request->all());
-        $donorFields = (new Donor)->getTableColumns();
-        $addressFields = (new Address())->getTableColumns();
-        $cardFields = (new Card)->getTableColumns();
+        $response = $this->createAddress($request);
+        if (!$response instanceof Address) {
+            return $response;
+        }
+    
+        $address = $response;
 
-        $address = Address::create(
-            $requestFieldsCollection->only($addressFields)->all()
-        );
-
-        if (!$address) {
-            return back()->with('error', 'Erro ao cadastrar endereço');
+        $response = $this->createCard($request);
+        if (!$response instanceof Card) {
+            return $response;
         }
 
-        $card = Card::create(
-            $requestFieldsCollection->only($cardFields)->all()
-        );
+        $card = $response;
 
-        if (!$card) {
-            return back()->with('error', 'Erro ao cadastrar cartão');
+        $donor = new Donor();
+        $donor->name = $request->input('name');
+        $donor->email = $request->input('email');
+        $donor->cpf = $request->input('cpf');
+        $donor->phone = $request->input('phone');
+        $donor->born_at = $request->input('born_at');
+        $donor->donationInterval = $request->input('donationInterval');
+        $donor->donationValue = $request->input('donationValue');
+        $donor->address_id = $address->id;
+        $donor->card_id = $card->id;
+
+        $message = 'Erro ao cadastrar doador';
+        try {
+            $saved = $donor->save();
+        } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
         }
 
-        $fieldsDonor = $requestFieldsCollection->only($donorFields)->all();
-        $fieldsDonor['address_id'] = $address->id;
-        $fieldsDonor['card_id'] = $card->id;
-
-        $donor = Donor::create(
-            $fieldsDonor
-        );
-
-        if (!$donor) {
+        if (!$saved) {
             return back()->with('error', 'Erro ao cadastrar doador');
         }
 

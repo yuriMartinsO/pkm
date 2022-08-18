@@ -11,7 +11,6 @@ use Illuminate\Database\Eloquent\Model;
 class Donor extends Model
 {
     use HasFactory;
-    use GetTableColumnsTrait;
 
     /**
      * Constants of donation interval
@@ -29,7 +28,17 @@ class Donor extends Model
     ];
     
     /**
-     * Dados de doador protegidos por requisição
+     * Data allowed of filling
      */
-    protected $guarded = array();
+    protected $fillable = [
+        'name',
+        'email',
+        'cpf',
+        'phone',
+        'born_at',
+        'donationInterval',
+        'donationValue',
+        'address_id',
+        'card_id'
+    ];
 }

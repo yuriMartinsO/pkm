@@ -11,10 +11,29 @@ use Illuminate\Database\Eloquent\Model;
 class Card extends Model
 {
     use HasFactory;
-    use GetTableColumnsTrait;
 
     /**
-     * Dados protegidos por requisição
+     * Constantes de tipo de cartão
      */
-    protected $guarded = array();
+    const DEBIT = 'debito';
+    const CREDIT = 'credito';
+
+    /**
+     * Data allowed of filling
+     */
+    protected $fillable = [
+        'cardNumber',
+        'cardFlag'
+    ];
+
+    /**
+     * mask the card number
+     *
+     * @param string $cardNumber
+     * @return string
+     */
+    public static function maskCardNumber(string $cardNumber)
+    {
+        return preg_replace("/(?<=.{6}).(?=.{4})/", "X", $cardNumber);
+    }
 }
