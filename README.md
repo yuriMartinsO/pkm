@@ -7,7 +7,6 @@ obs: necessário ter instalado laravel 8 e composer 2
 - acessar no navegador: http://localhost:8000/ <br>
 
 obs: no arquivo "teste_de_logica.php" se encontra o exercício 2 de lógica. No diretório pmk-dump-banco se encontra o dump do banco <br>
-obs: por favor, se possível, enviar um feedback do projeto para mim. Isso ajuda bastante :D
 
 ---
 
