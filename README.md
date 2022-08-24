@@ -1,5 +1,4 @@
 # Como utilizar:
-
 obs: necessário ter instalado laravel 8 e composer 2
 
 1. Realizar os passos abaixo para rodar o projeto: <br>
